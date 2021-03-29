@@ -131,3 +131,5 @@ dmypy.json
 #zillow 
 zillow_df.csv
 env.py
+Exercises/zillow.csv
+zillow.csv

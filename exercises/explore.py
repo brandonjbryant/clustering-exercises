@@ -28,6 +28,15 @@ def train_validate_test_split(df, target, seed=123):
 ### Univariate
 
 def explore_univariate(train, cat_vars, quant_vars):
+    '''
+    explore each individual categorical variably by: 
+    taking in a dataframe and a categorical variable and returning
+    a frequency table and barplot of the frequencies. 
+    
+    explore each individual quantitative variable by:
+    takes in a dataframe and a quantitative variable and returns
+    descriptive stats table, histogram, and boxplot of the distributions. 
+    '''
     for var in cat_vars:
         explore_univariate_categorical(train, var)
         print('_________________________________________________________________')
@@ -138,7 +147,6 @@ def plot_cat_by_target(train, categorical_target, binary_var):
     p = plt.axhline(overall_rate, ls='--', color='gray')
     return p
 
-    
 def compare_means(train, continuous_target, binary_var, alt_hyp='two-sided'):
     x = train[train[binary_var]==0][continuous_target]
     y = train[train[binary_var]==1][continuous_target]
@@ -150,9 +158,9 @@ def compare_means(train, continuous_target, binary_var, alt_hyp='two-sided'):
 def explore_bivariate_quant(train, categorical_target, continuous_target, quant_var):
     '''
     descriptive stats by each target class. 
-    compare means across 2 target groups 
     boxenplot of target x quant
     swarmplot of target x quant
+    Scatterplot
     '''
     print(quant_var, "\n____________________\n")
     descriptive_stats = train.groupby(categorical_target)[quant_var].describe().T
